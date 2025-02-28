@@ -1,0 +1,9 @@
+# Arquivos e pastas desnecessárias
+__pycache__/
+.venv/
+.vscode/
+build/
+dist/
+*.spec
+*.log
+*.xlsx
