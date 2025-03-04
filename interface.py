@@ -187,8 +187,8 @@ app.geometry(f"{win_width}x{win_height}+{pos_x}+{pos_y}")
 app.protocol("WM_DELETE_WINDOW", exit_app)
 
 # Label com versào do programa
-label_version = ctk.CTkLabel(page1, text="v.1.2.1")
-label_version.pack(padx=(220,0))
+label_version = ctk.CTkLabel(page1, text="v.1.2.2")
+label_version.pack(padx=(215,0))
 
 # Campo de entrada da matrícula
 entry_user = ctk.CTkEntry(page1, placeholder_text="Matrícula")

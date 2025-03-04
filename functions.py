@@ -1,13 +1,12 @@
 import logs
 import time
 import win32com.client
-import glob
-import os
 import re
 import logs
 import pythoncom
 import webbrowser
 import xlwings as xw
+import pywintypes
 from openpyxl import load_workbook
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -174,10 +173,10 @@ def extract(folder_name: str, spreadsheet: str):
     except PermissionError:
         logs.logging.info("Feche a planilha antes de inciar a extração!")
         return "Feche a planilha antes de inciar a extração!", "red", 10000
-    except IndexError:
+    except FileNotFoundError:
         logs.logging.info("Arquivo Excel não encontrado!")
         return "Arquivo Excel não encontrado!", "red", 10000
-    except:
+    except pywintypes.com_error:
         logs.logging.info("Pasta não encontrada!")
         return "Pasta não encontrada!", "red", 10000
     finally:
