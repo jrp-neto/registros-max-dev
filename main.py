@@ -17,7 +17,14 @@ def start(user: str, password: str, spreadsheet: str, run_mode: bool):
     options.add_argument("--headless") if run_mode else options.add_argument("--force-device-scale-factor=0.9")
     # Inicialização de variáveis
     url = "https://intranet.sereduc.com/CRA/ConsultarAluno.aspx"
-    df_spreadsheet = pd.read_excel(spreadsheet, sheet_name=1, dtype=object)
+    try:
+        df_spreadsheet = pd.read_excel(spreadsheet, sheet_name=1, dtype=object)
+    except PermissionError:
+        logs.logging.info("Feche a planilha antes de inciar os registros!")
+        return "Feche a planilha antes de inciar os registros!", "red", 10000
+    except FileNotFoundError:
+        logs.logging.info("Arquivo Excel não encontrado!")
+        return "Arquivo Excel não encontrado!", "red", 10000
     register_counter = 0
     error_counter = 0
     e_mails = []
